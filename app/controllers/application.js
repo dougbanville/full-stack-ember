@@ -15,7 +15,7 @@ export default class ApplicationController extends Controller {
   async getResponse() {
     this.loading = true;
     if (!this.prompt) return null;
-    const response = await fetch('/api/hello?prompt=' + this.prompt);
+    const response = await fetch('/api/fancy?prompt=' + this.prompt);
 
     this.result = await response.json();
     this.loading = false;
