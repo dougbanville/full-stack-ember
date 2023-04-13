@@ -6,6 +6,7 @@ module.exports = function (environment) {
     environment,
     rootURL: '/',
     locationType: 'history',
+    myTopSecretApiKey: process.env.MY_TOP_SECRET_KEY,
     EmberENV: {
       EXTEND_PROTOTYPES: false,
       FEATURES: {

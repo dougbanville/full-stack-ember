@@ -1,0 +1,20 @@
+const https = require("https");
+
+export default function handler(req, res) {
+  const { name = "World" } = req.query;
+  //return res.send(`Hello ${name}!`);
+
+  // Set the base URL of the WordPress site
+  const baseURL = "https://hi-ya.com";
+
+  // Set the API path
+  const apiPath = "/wp-json/wp/v2";
+
+  // Create an instance of the axios library with the base URL and API path
+
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
+  return res.status(200).json({ name: "Hello World" });
+}

@@ -1,5 +1,19 @@
 {{page-title "FullStack"}}
 
-<h1>Full Stack</h1>
+<h1>My New API</h1>
+<Input
+  label="prompt"
+  @type="text"
+  @value={{this.prompt}}
+  placeholder="Ask a question"
+/>
+<button {{on "click" this.getResponse}}>Get Result</button>
 
+{{#if this.loading}}
+  <p>Loading...</p>
+{{else}}
+  {{#if this.result}}
+    <p>{{this.result.data.choices.0.text}}</p>
+  {{/if}}
+{{/if}}
 {{outlet}}
