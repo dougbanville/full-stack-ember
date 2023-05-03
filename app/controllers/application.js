@@ -6,6 +6,9 @@ export default class ApplicationController extends Controller {
   queryParams = ['prompt'];
 
   @tracked prompt = null;
+  @tracked name = 'Fred West';
+  @tracked personality = 'An Irish traveler';
+  @tracked offerAmount = 5;
 
   @tracked result = null;
 
@@ -15,7 +18,9 @@ export default class ApplicationController extends Controller {
   async getResponse() {
     this.loading = true;
     if (!this.prompt) return null;
-    const response = await fetch('/api/fancy?prompt=' + this.prompt);
+    const response = await fetch(
+      `/api/quibble?name=${this.name}&personality=${this.personality}&offerAmount=${this.offerAmount}`,
+    );
 
     this.result = await response.json();
     this.loading = false;

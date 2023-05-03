@@ -1,12 +1,33 @@
 {{page-title "FullStack"}}
 
-<h1>My New API</h1>
+<h1>Quibble</h1>
+The reserve is $15.00
+<p>
+  Hi
+  {{this.name}}, you want to haggle with a
+  {{this.personality}}
+  for this amount:
+  {{this.offerAmount}}
+</p>
+<label for="name">Name</label>
+<Input label="name" @type="text" @value={{this.name}} placeholder="Your Name" />
+<label for="amount">Your Offer</label>
 <Input
-  label="prompt"
+  label="amount"
   @type="text"
-  @value={{this.prompt}}
+  @value={{this.offerAmount}}
   placeholder="Ask a question"
 />
+<label for="personality">Haggle with</label>
+<select
+  name="personality"
+  id="personality"
+  {{on "change" (pick "target.value" (set this "personality"))}}
+>
+  <option value="An Irish traveler">An Irish traveler</option>
+  <option value="An East London Gangster">An East London Gangster</option>
+  <option value="A Wall street Tycoon">A Wall street Tycoon</option>
+</select>
 <button {{on "click" this.getResponse}}>Get Result</button>
 
 {{#if this.loading}}
