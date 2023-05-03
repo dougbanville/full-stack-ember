@@ -17,7 +17,6 @@ export default class ApplicationController extends Controller {
   @action
   async getResponse() {
     this.loading = true;
-    if (!this.prompt) return null;
     try {
       const response = await fetch(
         `/api/quibble?name=${this.name}&personality=${this.personality}&offerAmount=${this.offerAmount}`,
