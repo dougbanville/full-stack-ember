@@ -18,11 +18,16 @@ export default class ApplicationController extends Controller {
   async getResponse() {
     this.loading = true;
     if (!this.prompt) return null;
-    const response = await fetch(
-      `/api/quibble?name=${this.name}&personality=${this.personality}&offerAmount=${this.offerAmount}`,
-    );
+    try {
+      const response = await fetch(
+        `/api/quibble?name=${this.name}&personality=${this.personality}&offerAmount=${this.offerAmount}`,
+      );
 
-    this.result = await response.json();
-    this.loading = false;
+      this.result = await response.json();
+      console.log(this.result);
+      this.loading = false;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
